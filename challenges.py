@@ -1,17 +1,40 @@
-class Challenges():
+from textwrap import dedent
 
-    def start():
+
+class Challenge():
+
+    def start(self):
         pass
 
-    def next_turn():
+    def next_turn(self):
         pass
 
-    def end():
+    def end(self):
         pass
 
-    def players():
+    def players(self):
         pass
 
-    def score_board():
+    def score_board(self):
         pass
 
+class TicTacToe(Challenge):
+
+    def __init__(self):
+        self.print_screen()
+
+    def print_screen(self):
+        print("""\t\t   a     b     c
+                      |     |
+                1  -  |  -  |  -
+                 _____|_____|_____
+                      |     |
+                2  -  |  -  |  -
+                 _____|_____|_____
+                      |     |
+                3  -  |  -  |  -
+                      |     |     """)
+
+
+if __name__ == "__main__":
+    ticTacToe = TicTacToe()
