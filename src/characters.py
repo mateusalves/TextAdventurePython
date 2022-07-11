@@ -7,12 +7,12 @@ class Character():
     def __init__(self, name):
         self.name = name
 
-    def talk(self, msg):
+    def talk(self, msg, dramatic_pause=0.05):
         print(f"[{self.name}]: ", end='')
         for char in msg:
             print(char, end='')
             sys.stdout.flush()
-            sleep(0.05)
+            sleep(dramatic_pause)
             if char in ['?', '.', '!']:
                 sleep(0.4)
             if sys.stdin in select.select([sys.stdin], [], [], 0)[0]:

@@ -19,6 +19,17 @@ class FirstBoss(Character):
         self.talk("Did you love it? Isn't beautiful? I surely put a lot of effort into this.")
         self.talk("Enough with this conversation! Choose your weapon!")
         self.playerChoice = (input('[x/o]? > ')).lower()
+        if self.playerChoice not in ['x', 'o']:
+            sleep(2)
+            os.system("clear")
+            self.talk("Are you trying to be funny?")
+            self.talk("...")
+            self.talk("I'll be 'o' and you'll be 'x'")
+            self.playerChoice = 'x'
+            self.talk("This way you'll remember to never 'cross' my way again hihihi")
+            self.talk("HAHAHAHA", dramatic_pause=0.1)
+            self.talk("Did you get it? HAHA I'm nailing it today!")
+            self.ticTacToe.screen()
         self.talk("I'll even let you start since I'm so great at this!")
         print("Choose line and column in this order. Ex: '1a'")
         self.play()
@@ -26,7 +37,6 @@ class FirstBoss(Character):
     def play(self):
         while(True):
             self.input = (input(' > '))
-            # TODO: preciso fazer o sistema para entender o fim do jogo
             try:
                 self.ticTacToe.moves[self.input] = self.playerChoice
                 os.system("clear")
@@ -37,11 +47,18 @@ class FirstBoss(Character):
                 self.ticTacToe.movesLeft.remove(bossMove)
                 sleep(2)
                 os.system("clear")
+                champz = self.ticTacToe.check_win()
+                if champz is not None:
+                    if champz == self.playerChoice:
+                        self.defeated()
+                    else:
+                        self.victorious()
                 self.ticTacToe.screen()
+
             except Exception:
                 if not self.ticTacToe.movesLeft:
                     self.talk("You're better than I expected! Lets go again!")
-                    self.ticTacToe.resetGame()
+                    self.ticTacToe.reset_game()
                     os.system("clear")
                     self.talk("This time I'll bring my A-game!")
                     self.ticTacToe.screen()
@@ -52,6 +69,16 @@ class FirstBoss(Character):
                 print("Choose line and column in this order. Ex: '1a'")
                 continue
 
+    def defeated(self):
+        self.talk("Ohh nooo!!! I underestimated you!")
+        self.talk("Next time I won't loose again!")
+        self.talk("You might not have the same luck.")
+
+    def victorious(self):
+        self.talk("For one little moment I thought you worth my time.")
+        self.talk("You better practice a thousand years before challenging me again")
+        self.talk("HA HA HA HA HA HA HA HA", dramatic_pause=0.15)
+        exit(1)
 
 class SecondBoss(Character):
 
