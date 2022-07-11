@@ -27,5 +27,4 @@ class Map():
 
 class RoomBoss1(Scene):
     def enter(self):
-        boss = FirstBoss()
-        boss.talk()
+        boss = FirstBoss("Boss#1")
