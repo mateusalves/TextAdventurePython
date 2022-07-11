@@ -10,6 +10,7 @@ class FirstBoss(Character):
     def __init__(self, name):
         self.name = name
         self.input = 'y'
+        os.system("clear")
         self.talk("I'm the first Boss. Do you want to play some game?")
         self.input = (input('[y/n]? > ')).lower()
         self.talk("It's not like you have a choice! HAHAHAHA.")
@@ -25,24 +26,25 @@ class FirstBoss(Character):
     def play(self):
         while(True):
             self.input = (input(' > '))
-            # TODO: Tenho que provavelmente apagar essa classe screen. Meio nada a ver
             # TODO: preciso fazer o sistema para entender o fim do jogo
             try:
-                self.ticTacToe.screen.moves[self.input] = self.playerChoice
-                self.ticTacToe.screen.ticTacToeGame()
-                self.ticTacToe.screen.movesLeft.remove(self.input)
-                bossMove = self.ticTacToe.screen.movesLeft[randint(0, len(self.ticTacToe.screen.movesLeft)-1)]
-                self.ticTacToe.screen.moves[bossMove] = 'o' if self.playerChoice == 'x' else 'x'
-                self.ticTacToe.screen.movesLeft.remove(bossMove)
+                self.ticTacToe.moves[self.input] = self.playerChoice
+                os.system("clear")
+                self.ticTacToe.screen()
+                self.ticTacToe.movesLeft.remove(self.input)
+                bossMove = self.ticTacToe.movesLeft[randint(0, len(self.ticTacToe.movesLeft)-1)]
+                self.ticTacToe.moves[bossMove] = 'o' if self.playerChoice == 'x' else 'x'
+                self.ticTacToe.movesLeft.remove(bossMove)
                 sleep(2)
-                self.ticTacToe.screen.ticTacToeGame()
+                os.system("clear")
+                self.ticTacToe.screen()
             except Exception:
-                if not self.ticTacToe.screen.movesLeft:
+                if not self.ticTacToe.movesLeft:
                     self.talk("You're better than I expected! Lets go again!")
-                    self.ticTacToe.screen.resetGame()
+                    self.ticTacToe.resetGame()
                     os.system("clear")
                     self.talk("This time I'll bring my A-game!")
-                    self.ticTacToe.screen.ticTacToeGame()
+                    self.ticTacToe.screen()
                     print("Choose line and column in this order. Ex: '1a'")
                     continue
 
