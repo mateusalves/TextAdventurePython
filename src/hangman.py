@@ -5,23 +5,24 @@ class HangMan():
         # TODO: Vai ser melhor de 3?
         self.body_parts = {'head': 'O', 'l_arm': '/', 'r_arm': '\\',
                            'body':  '|', 'l_leg': '/', 'r_leg': '\\'}
-        self.mistakes = 0
+        self.mistakes = 6
         self.secret_word = 'test'
-        self.guessed_letters = ['t']
-        self.chosen_letters = ['a', 't']
+        self.guessed_letters = ['t', 'e', '']
+        self.chosen_letters = ['e', 't', 'M', 'x', 'i']
 
     def screen(self):
-        print("\t\tYour turn")
+        print("\n\t\tYour turn\n")
         print("\t   _____      \n"
               "\t  |     |     \n"
               "\t  |     %s    \n"
               "\t  |    %s%s%s \n"
               "\t  |    %s %s  \n"
+              "\t  |           \n"
               "\t__|__           " %
               (self.body_parts['head'] if (self.mistakes > 0) else ' ',
-              self.body_parts['l_arm'] if (self.mistakes > 1) else ' ',
-              self.body_parts['body'] if (self.mistakes > 3) else ' ',
-              self.body_parts['r_arm'] if (self.mistakes > 2) else ' ',
+              self.body_parts['l_arm'] if (self.mistakes > 2) else ' ',
+              self.body_parts['body'] if (self.mistakes > 1) else ' ',
+              self.body_parts['r_arm'] if (self.mistakes > 3) else ' ',
               self.body_parts['l_leg'] if (self.mistakes > 4) else ' ',
               self.body_parts['r_leg'] if (self.mistakes > 5) else ' '), end='')
 
@@ -33,7 +34,7 @@ class HangMan():
                 print(f'{letter} ', end='')
             else:
                 print('__ ', end='')
-        print('\n\n\tAlready chosen: ', end='')
+        print('\n\n\n\tAlready chosen: ', end='')
         print(*self.chosen_letters, sep=", ")
 
 
