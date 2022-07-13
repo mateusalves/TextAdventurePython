@@ -1,3 +1,10 @@
+O herói precisa acabar com 3 chefes. O primeiro chefe joga o jogo da velha.
+O segundo chefe joga o jogo da forca e o terceiro o jogo da guerra.
+O heroi possui um inventário com uma moeda de ouro e pode escolher tentar subornar os chefes.
+Quando o chefe é derrotado ele concede ou uma moeda ou uma habilidade especial.
+O terceiro chefe só pode ser subornado com 3 moedas e 1 derrota do jogo da guerra
+
+
 50 soldados
 
 Marinha        20
