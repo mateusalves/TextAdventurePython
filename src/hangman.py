@@ -1,17 +1,16 @@
-class HangMan():
+from random import randint
+import os
 
-    def __init__(self):
-        # TODO: escolher a palavra aleatoriamente de acordo com o input do user
-        # TODO: Vai ser melhor de 3?
+
+class HangMan():
+    def __init__(self, lang='pt_br'):
         self.body_parts = {'head': 'O', 'l_arm': '/', 'r_arm': '\\',
                            'body':  '|', 'l_leg': '/', 'r_leg': '\\'}
-        self.mistakes = 6
-        self.secret_word = 'test'
-        self.guessed_letters = ['t', 'e', '']
-        self.chosen_letters = ['e', 't', 'M', 'x', 'i']
+        self.lang = lang
+        self.reset_game()
 
     def screen(self):
-        print("\n\t\tYour turn\n")
+        # print("\n\t\tYour turn\n")
         print("\t   _____      \n"
               "\t  |     |     \n"
               "\t  |     %s    \n"
@@ -50,12 +49,16 @@ class HangMan():
     def finished(self):
         pass
 
-    def choose_random_word(self, lang):
-        if lang == 'pt_br':
-            pass
-            # with open(text, 'r') as f:
-            #     lines = f.readlines()
-            #     f.close()
+    def choose_random_word(self):
+        if self.lang == 'pt_br':
+            with open('../words_pt.txt', 'r') as f:
+                lines = f.readlines()
+                f.close()
+        else:
+            with open('../words_en.txt', 'r') as f:
+                lines = f.readlines()
+                f.close()
+        return lines[randint(0, len(lines)-1)]
 
 
 if __name__ == "__main__":
