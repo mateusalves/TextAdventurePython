@@ -26,15 +26,18 @@ class HangMan():
               self.body_parts['r_leg'] if (self.mistakes > 5) else ' '), end='')
 
         if not self.guessed_letters:
-            print(len(self.secret_word) * '__ ')
+            print((len(self.secret_word) - 1) * '__ ')
 
-        for letter in self.secret_word:
-            if letter in self.guessed_letters:
-                print(f'{letter} ', end='')
-            else:
-                print('__ ', end='')
+        else:
+            for letter in self.secret_word:
+                if letter in self.guessed_letters:
+                    print(f'{letter} ', end='')
+                else:
+                    print('__ ', end='')
+
         print('\n\n\n\tAlready chosen: ', end='')
         print(*self.chosen_letters, sep=", ")
+        print('\n\n')
 
 
     def reset_game(self):
@@ -74,4 +77,9 @@ class HangMan():
 if __name__ == "__main__":
     hgm = HangMan()
     hgm.screen()
-
+    hgm.guess('a')
+    hgm.screen()
+    hgm.guess('k')
+    hgm.screen()
+    hgm.guess('k')
+    hgm.screen()
