@@ -11,31 +11,30 @@ class FirstBoss(Character):
         self.name = name
         self.input = 'y'
         os.system("clear")
-        # self.talk("I'm the first Boss. Do you want to play some game?")
-        # # self.input = (input('[y/n]? > ')).lower()
-        # self.talk("It's not like you have a choice! HAHAHAHA.")
-        # self.talk("Behold the evil tic tac toe!")
+        self.talk("I'm the first Boss. Do you want to play some game?")
+        self.input = (input('[y/n]? > ')).lower()
+        self.talk("It's not like you have a choice! HAHAHAHA.")
+        self.talk("Behold the evil tic tac toe!")
         self.ticTacToe = TicTacToe()
-        # self.talk("Did you love it? Isn't beautiful? I surely put a lot of effort into this.")
-        # self.talk("Enough with this conversation! Choose your weapon!")
-        # self.playerChoice = (input('[x/o]? > ')).lower()
-        self.playerChoice ='x'
-        # if self.playerChoice not in ['x', 'o']:
-        #     # sleep(2)
-        #     os.system("clear")
-        #     self.talk("Are you trying to be funny?")
-        #     self.talk("...")
-        #     self.talk("I'll be 'o' and you'll be 'x'")
-        #     self.playerChoice = 'x'
-        #     self.talk("This way you'll remember to never 'cross' my way again hihihi")
-        #     self.talk("HAHAHAHA", dramatic_pause=0.1)
-        #     self.talk("Did you get it? HAHA I'm nailing it today!")
-        #     self.ticTacToe.screen()
-        # self.talk("I'll even let you start since I'm so great at this!")
-        # print("Choose line and column in this order. Ex: '1a'")
-        # self.play()
+        self.talk("Did you love it? Isn't beautiful? I surely put a lot of effort into this.")
+        self.talk("Enough with this conversation! Choose your weapon!")
+        self.playerChoice = (input('[x/o]? > ')).lower()
+        if self.playerChoice not in ['x', 'o']:
+            sleep(2)
+            os.system("clear")
+            self.talk("Are you trying to be funny?")
+            self.talk("...")
+            self.talk("I'll be 'o' and you'll be 'x'")
+            self.playerChoice = 'x'
+            self.talk("This way you'll remember to never 'cross' my way again hihihi")
+            self.talk("HAHAHAHA", dramatic_pause=0.1)
+            self.talk("Did you get it? HAHA I'm nailing it today!")
+            self.ticTacToe.screen()
+        self.talk("I'll even let you start since I'm so great at this!")
+        print("Choose line and column in this order. Ex: '1a'")
+        self.play()
 
-    def play(self):
+    def play(self): #TODO: move this method to tictactoe
         while(True):
             self.input = (input(' > '))
             try:
