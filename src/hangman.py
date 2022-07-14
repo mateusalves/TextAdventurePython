@@ -9,8 +9,13 @@ class HangMan():
         self.lang = lang
         self.reset_game()
 
+    # TODO: colocar as palavras em caps
+    def play(self):
+        while not self.finished():
+            self.screen()
+            self.guess(input('Take a guess > '))
+
     def screen(self):
-        # print("\n\t\tYour turn\n")
         print("\t   _____      \n"
               "\t  |     |     \n"
               "\t  |     %s    \n"
@@ -26,8 +31,7 @@ class HangMan():
               self.body_parts['r_leg'] if (self.mistakes > 5) else ' '), end='')
 
         if not self.guessed_letters:
-            print((len(self.secret_word) - 1) * '__ ')
-
+            print((len(self.secret_word)) * '__ ')
         else:
             for letter in self.secret_word:
                 if letter in self.guessed_letters:
@@ -39,9 +43,8 @@ class HangMan():
         print(*self.chosen_letters, sep=", ")
         print('\n\n')
 
-
     def reset_game(self):
-        self.secret_word = self.choose_random_word()
+        self.secret_word = self.choose_random_word().replace("\n", "")
         print(self.secret_word)
         self.guessed_letters = []
         self.chosen_letters = []
@@ -50,17 +53,27 @@ class HangMan():
     def guess(self, letter):
         if letter in self.chosen_letters:
             print('This letter was already chosen. Please, guess another one.')
-            return
+            return None
 
         self.chosen_letters.append(letter)
 
         if letter in self.secret_word:
             self.guessed_letters.append(letter)
+            return True
         else:
             self.mistakes += 1
+            return False
 
     def finished(self):
-        pass
+        print('len guessed', len(self.guessed_letters))
+        print('len secret', len(self.secret_word))
+        if len(self.guessed_letters) == len(self.secret_word):
+            return True
+        if self.mistakes == 6:
+            self.screen()
+            return True
+        else:
+            return False
 
     def choose_random_word(self):
         if self.lang == 'pt_br':
@@ -76,10 +89,4 @@ class HangMan():
 
 if __name__ == "__main__":
     hgm = HangMan()
-    hgm.screen()
-    hgm.guess('a')
-    hgm.screen()
-    hgm.guess('k')
-    hgm.screen()
-    hgm.guess('k')
-    hgm.screen()
+    hgm.play()
