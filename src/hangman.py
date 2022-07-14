@@ -38,13 +38,23 @@ class HangMan():
 
 
     def reset_game(self):
-        # TODO: Vai ser melhor de 3?
-        # TODO: escolher nova palavra e zerar mistakes e outras variaveis
-        self.secret_word = 'test'
+        self.secret_word = self.choose_random_word()
+        print(self.secret_word)
         self.guessed_letters = []
         self.chosen_letters = []
         self.mistakes = 0
-        pass
+
+    def guess(self, letter):
+        if letter in self.chosen_letters:
+            print('This letter was already chosen. Please, guess another one.')
+            return
+
+        self.chosen_letters.append(letter)
+
+        if letter in self.secret_word:
+            self.guessed_letters.append(letter)
+        else:
+            self.mistakes += 1
 
     def finished(self):
         pass
