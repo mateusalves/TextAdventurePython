@@ -63,15 +63,6 @@ class HangMan():
             self.mistakes += 1
             return False
 
-    def finished(self):
-        if set(self.guessed_letters) == set(list(self.secret_word)):
-            return True
-        if self.mistakes == 6:
-            self.screen()
-            return True
-        else:
-            return False
-
     def choose_random_word(self):
         if self.lang == 'pt_br':
             with open('../words_pt.txt', 'r') as f:
@@ -82,6 +73,15 @@ class HangMan():
                 lines = f.readlines()
                 f.close()
         return lines[randint(0, len(lines)-1)]
+
+    def finished(self):
+        if set(self.guessed_letters) == set(list(self.secret_word)):
+            return True
+        if self.mistakes == 6:
+            self.screen()
+            return True
+        else:
+            return False
 
 
 if __name__ == "__main__":
