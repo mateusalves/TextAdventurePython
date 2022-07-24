@@ -16,62 +16,40 @@ class FirstBoss(Character):
         self.talk("It's not like you have a choice! HAHAHAHA.")
         self.talk("Behold the evil tic tac toe!")
         self.ticTacToe = TicTacToe()
+        self.ticTacToe.screen()
         self.talk("Did you love it? Isn't beautiful? I surely put a lot of effort into this.")
         self.talk("Enough with this conversation! Choose your weapon!")
-        self.playerChoice = (input('[x/o]? > ')).lower()
-        if self.playerChoice not in ['x', 'o']:
+        self.player_choice = (input('[x/o]? > ')).lower()
+
+        if self.player_choice not in ['x', 'o']:
             sleep(2)
             os.system("clear")
             self.talk("Are you trying to be funny?")
             self.talk("...")
             self.talk("I'll be 'o' and you'll be 'x'")
-            self.playerChoice = 'x'
             self.talk("This way you'll remember to never 'cross' my way again hihihi")
             self.talk("HAHAHAHA", dramatic_pause=0.1)
             self.talk("Did you get it? HAHA I'm nailing it today!")
-            self.ticTacToe.screen()
+        else:
+            self.ticTacToe.set_player_choice(self.player_choice)
+
         self.talk("I'll even let you start since I'm so great at this!")
         print("Choose line and column in this order. Ex: '1a'")
-        self.play()
+        self.battle()
 
-    def play(self): #TODO: move this method to tictactoe
-        while(True):
-            self.input = (input(' > '))
-            try:
-
-                if self.ticTacToe.moves[self.input] != '-':
-                    raise  Exception
-
-                self.ticTacToe.moves[self.input] = self.playerChoice
-                os.system("clear")
-                self.ticTacToe.screen()
-                self.ticTacToe.movesLeft.remove(self.input)
-                bossMove = self.ticTacToe.movesLeft[randint(0, len(self.ticTacToe.movesLeft)-1)]
-                self.ticTacToe.moves[bossMove] = 'o' if self.playerChoice == 'x' else 'x'
-                self.ticTacToe.movesLeft.remove(bossMove)
-                sleep(2)
-                os.system("clear")
-                self.ticTacToe.screen()
-                champz = self.ticTacToe.finished()
-                if champz is not None:
-                    if champz == self.playerChoice:
-                        return self.defeated()
-                    else:
-                        return self.victorious()
-
-            except Exception:
-                if not self.ticTacToe.movesLeft:
-                    self.talk("You're better than I expected! Lets go again!")
-                    self.ticTacToe.reset_game()
-                    os.system("clear")
-                    self.talk("This time I'll bring my A-game!")
-                    self.ticTacToe.screen()
-                    print("Choose line and column in this order. Ex: '1a'")
-                    continue
-
-                self.talk("You better play right, fool!")
-                print("Choose line and column in this order. Ex: '1a'")
-                continue
+    def battle(self):
+        battle_result = self.ticTacToe.play()
+        if battle_result == 'draw':
+            self.talk("You're better than I expected! Lets go again!")
+            self.ticTacToe.reset_game()
+            os.system("clear")
+            self.talk("This time I'll bring my A-game!")
+            print("Choose line and column in this order. Ex: '1a'")
+            return self.battle()
+        elif battle_result == 'player_victory':
+            return self.defeated()
+        else:
+            return self.victorious()
 
     def defeated(self):
         self.talk("Ohh nooo!!! I underestimated you!")
@@ -84,20 +62,4 @@ class FirstBoss(Character):
         self.talk("You better practice a thousand years before challenging me again")
         self.talk("HA HA HA HA HA HA HA HA", dramatic_pause=0.15)
         return 'game_over'
-
-class SecondBoss(Character):
-
-    def __init__(self):
-        pass
-
-    def play(self):
-        print("I'm the second Boss.")
-
-class ThirdBoss(Character):
-
-    def __init__(self):
-        pass
-
-    def play(self):
-        print("I'm the third Boss.")
 
