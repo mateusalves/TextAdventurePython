@@ -62,6 +62,9 @@ class TicTacToe():
             self.moves_left.remove(player_movement)
             self.screen()
 
+            if self.finished():
+                return
+
             boss_move = self.moves_left[randint(0, len(self.moves_left)-1)]
             print('Boss turn > ', end="", flush=True)
             sleep(2)
