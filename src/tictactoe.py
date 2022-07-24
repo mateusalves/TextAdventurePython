@@ -6,6 +6,7 @@ import os
 class TicTacToe():
     def __init__(self, player_choice='x'):
         self.player_choice = player_choice
+        self.boss_choice = 'o' if self.player_choice == 'x' else 'x'
         self.champz = None
         self.reset_game()
 
@@ -52,6 +53,7 @@ class TicTacToe():
         self.moves_left = ['1a', '1b', '1c',
                           '2a', '2b', '2c',
                           '3a', '3b', '3c']
+        self.champz = None
 
     def next_movement(self, player_movement):
         try:
@@ -73,8 +75,6 @@ class TicTacToe():
             self.moves_left.remove(boss_move)
 
         except Exception:
-            if not self.moves_left:
-                self.champz = 'd'
             os.system('clear')
             print("Wrong movement. Please, select another one.")
             print("Choose line and column in this order. Ex: '1a'")
@@ -107,6 +107,8 @@ class TicTacToe():
         elif(self.moves['1c'] != '-' and self.moves['1c'] == self.moves['2b'] and
              self.moves['1c'] == self.moves['3a']):
             return self.moves['1c']
+        elif not self.moves_left:
+            return 'draw'
         else:
             return None
 
