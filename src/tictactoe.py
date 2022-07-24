@@ -1,13 +1,34 @@
-class TicTacToe():
+from time import sleep
+from random import randint
+import os
 
-    def __init__(self):
-        self.moves = {'1a': '-', '1b': '-', '1c': '-',
-                      '2a': '-', '2b': '-', '2c': '-',
-                      '3a': '-', '3b': '-', '3c': '-'}
-        self.moves_left = ['1a', '1b', '1c',
-                           '2a', '2b', '2c',
-                           '3a', '3b', '3c']
+
+class TicTacToe():
+    def __init__(self, player_choice='x'):
+        self.player_choice = player_choice
+        self.champz = None
+        self.reset_game()
+
+    def set_player_choice(self, new_player_choice):
+        self.player_choice = new_player_choice
+        self.boss_choice = 'o' if self.player_choice == 'x' else 'x'
+
+    def play(self):
+        while not self.champz:
+            self.screen()
+            self.next_movement(input('Your turn > '))
+            self.champz = self.finished()
+
         self.screen()
+        if self.champz == self.player_choice:
+            print('player victory')
+            return 'player_victory'
+        elif self.champz == self.boss_choice:
+            print('boss victory')
+            return 'boss_victory'
+        else:
+            print('draw')
+            return 'draw'
 
     def screen(self):
         print("""\n\t\t   a     b     c
@@ -31,6 +52,30 @@ class TicTacToe():
         self.moves_left = ['1a', '1b', '1c',
                           '2a', '2b', '2c',
                           '3a', '3b', '3c']
+
+    def next_movement(self, player_movement):
+        try:
+            if self.moves[player_movement] != '-':
+                raise Exception
+
+            self.moves[player_movement] = self.player_choice
+            self.moves_left.remove(player_movement)
+            self.screen()
+
+            boss_move = self.moves_left[randint(0, len(self.moves_left)-1)]
+            print('Boss turn > ', end="", flush=True)
+            sleep(2)
+            print(boss_move)
+            self.moves[boss_move] = self.boss_choice
+            self.moves_left.remove(boss_move)
+
+        except Exception:
+            if not self.moves_left:
+                self.champz = 'd'
+            os.system('clear')
+            print("Wrong movement. Please, select another one.")
+            print("Choose line and column in this order. Ex: '1a'")
+
 
     def finished(self):
         if(self.moves['1a'] != '-' and self.moves['1a'] == self.moves['1b'] and
@@ -64,3 +109,5 @@ class TicTacToe():
 
 if __name__ == "__main__":
     ticTacToe = TicTacToe()
+    ticTacToe.player_choice = 'o'
+    ticTacToe.play()
