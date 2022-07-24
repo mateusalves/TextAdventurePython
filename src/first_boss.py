@@ -7,15 +7,15 @@ import os
 
 class FirstBoss(Character):
 
-    def __init__(self, name):
+    def __init__(self, name="Boss#1"):
         self.name = name
-        self.input = 'y'
-        os.system("clear")
-        self.talk("I'm the first Boss. Do you want to play some game?")
+        self.ticTacToe = TicTacToe()
+
+    def intro(self):
+        self.talk(f"I'm the {self.name}. Do you want to play some game?")
         self.input = (input('[y/n]? > ')).lower()
         self.talk("It's not like you have a choice! HAHAHAHA.")
         self.talk("Behold the evil tic tac toe!")
-        self.ticTacToe = TicTacToe()
         self.ticTacToe.screen()
         self.talk("Did you love it? Isn't beautiful? I surely put a lot of effort into this.")
         self.talk("Enough with this conversation! Choose your weapon!")
@@ -35,7 +35,6 @@ class FirstBoss(Character):
 
         self.talk("I'll even let you start since I'm so great at this!")
         print("Choose line and column in this order. Ex: '1a'")
-        self.battle()
 
     def battle(self):
         battle_result = self.ticTacToe.play()
@@ -52,14 +51,19 @@ class FirstBoss(Character):
             return self.victorious()
 
     def defeated(self):
+        os.system('clear')
+        self.ticTacToe.screen()
         self.talk("Ohh nooo!!! I underestimated you!")
         self.talk("Next time I won't loose again!")
-        self.talk("You won't have the same luck.")
+        input("Press any key to continue... ")
         return 'boss_2'
 
     def victorious(self):
+        os.system('clear')
+        self.ticTacToe.screen()
         self.talk("For one little moment I thought you worth my time.")
         self.talk("You better practice a thousand years before challenging me again")
         self.talk("HA HA HA HA HA HA HA HA", dramatic_pause=0.15)
+        input("Press any key to continue... ")
         return 'game_over'
 

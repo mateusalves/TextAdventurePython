@@ -1,7 +1,6 @@
 from maps import *
 
 
-
 class Engine():
 
     def __init__(self, a_room):
