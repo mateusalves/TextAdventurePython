@@ -9,11 +9,10 @@ class HangMan():
         self.lang = lang
         self.reset_game()
 
-    # TODO: colocar as palavras em caps
     def play(self):
         while not self.finished():
             self.screen()
-            self.guess(input('Take a guess > '))
+            self.guess(input('Take a guess > ').upper())
 
     def screen(self):
         print("\t   _____      \n"
@@ -44,7 +43,7 @@ class HangMan():
         print('\n\n')
 
     def reset_game(self):
-        self.secret_word = self.choose_random_word().replace("\n", "")
+        self.secret_word = self.choose_random_word().replace("\n", "").upper()
         print(self.secret_word)
         self.guessed_letters = []
         self.chosen_letters = []
@@ -65,9 +64,7 @@ class HangMan():
             return False
 
     def finished(self):
-        print('len guessed', len(self.guessed_letters))
-        print('len secret', len(self.secret_word))
-        if len(self.guessed_letters) == len(self.secret_word):
+        if set(self.guessed_letters) == set(list(self.secret_word)):
             return True
         if self.mistakes == 6:
             self.screen()
