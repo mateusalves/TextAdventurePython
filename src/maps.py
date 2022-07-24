@@ -1,7 +1,9 @@
 from sys import exit
+from time import sleep
 from first_boss import FirstBoss
 from second_boss import SecondBoss
 from third_boss import ThirdBoss
+import os
 
 
 class Scene():
@@ -29,26 +31,41 @@ class Map():
 
 class RoomBoss1(Scene):
     def enter(self):
-        boss = FirstBoss("Boss#1")
-        return boss.play()
+        boss = FirstBoss()
+        os.system('clear')
+        print(f"\t\tYou entered the {boss.name}'s room")
+        print("\t\t     Get ready for battle!\n\n")
+        sleep(2)
+        boss.intro()
+        return boss.battle()
 
 class RoomBoss2(Scene):
     def enter(self):
-        boss = SecondBoss("Boss#2")
-        return boss.play()
+        boss = SecondBoss()
+        os.system('clear')
+        print(f"\t\tYou entered the {boss.name}'s room")
+        print("\t\t     Get ready for battle!\n\n")
+        sleep(2)
+        boss.intro()
+        return boss.battle()
 
 class RoomBoss3(Scene):
     def enter(self):
-        boss = ThirdBoss("Boss#3")
-        return boss.play()
+        boss = ThirdBoss()
+        os.system('clear')
+        print(f"\t\tYou entered the {boss.name}'s room")
+        print("\t\t     Get ready for battle!\n\n")
+        sleep(2)
+        boss.intro()
+        return boss.battle()
 
 class GameOver(Scene):
     def enter(self):
-        print("You kinda suck at this, don't you? :(")
+        print("\t\tYou kinda suck at this, don't you? :(")
         return 'room_finished'
 
 class Finished(Scene):
     def enter(self):
-        print('\n\n\t\tGame over.')
+        print('\n\n\t\t    Game over.')
         print('\t\tThanks for playing.')
         exit(1)
