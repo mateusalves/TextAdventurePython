@@ -34,11 +34,13 @@ class SecondBoss(Character):
         os.system("clear")
         self.hangman.screen()
         self.talk("Ohh nooo!!! I can't believe you defeated me!")
+        input("Press any key to continue... ")
         return 'boss_3'
 
     def victorious(self):
         os.system("clear")
         self.hangman.screen()
         self.talk("This result was set the moment you decided to challenge me.")
+        input("Press any key to continue... ")
         return 'game_over'
 

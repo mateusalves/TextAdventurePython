@@ -5,6 +5,7 @@ import os
 
 
 class HangMan():
+
     def __init__(self, lang='pt_br', starter='player'):
         self.body_parts = {'head': 'O', 'l_arm': '/', 'r_arm': '\\',
                            'body':  '|', 'l_leg': '/', 'r_leg': '\\'}

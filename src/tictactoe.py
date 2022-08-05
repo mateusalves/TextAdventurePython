@@ -4,6 +4,7 @@ import os
 
 
 class TicTacToe():
+
     def __init__(self, player_choice='x'):
         self.player_choice = player_choice
         self.boss_choice = 'o' if self.player_choice == 'x' else 'x'
