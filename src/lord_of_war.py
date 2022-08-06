@@ -14,24 +14,29 @@ class LordOfWar():
         while not self.finished():
             try:
                 navy, air, army = input("\n\nEnter your strategy separated by space > ").split()
-                self.player_strategy = {'navy': int(navy), 'airforce': (air), 'army': (army)}
+                self.player_strategy = {'navy': int(navy), 'airforce': int(air), 'army': int(army)}
                 self.screen()
+
+                if (int(navy) + int(air) + int(army)) != 100:
+                    print('\n\nYou must select exactly 100 soldiers to your forces')
+                    continue
+
                 print('\n\nRegistered')
-                input("Press enter when you're ready to review...")
+                self.boss_strategy_generator()
+                print('Boss is ready for battle')
+                print('Get ready...')
+                sleep(3)
                 self.screen(review_data=True)
 
-                #TODO: create alrogithm to select randomly the boss strategy
-
-            except Exception:
+            except Exception as e:
                 print('When choosing your strategy, please inform the 3 numbers separated by space')
-                print('Follow the order below')
+                print('Follow the order in the screen')
                 print('Please, try again...')
 
-
-        if self.player_points == 2:
-            victorious = 'player'
+        if self.player_victories == 2:
+            victorious = 'Player'
         else:
-            victorious = 'boss'
+            victorious = 'Boss'
 
         self.screen(winner=victorious)
         return victorious
