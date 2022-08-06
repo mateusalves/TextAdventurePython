@@ -44,6 +44,15 @@ class LordOfWar():
     def screen(self, review_data=False, winner=None):
         os.system('clear')
         print('''
+              _______  __  .__   __.      ___       __         .______        ___   .___________.___________. __       _______
+             |   ____||  | |  \ |  |     /   \     |  |        |   _  \      /   \  |           |           ||  |     |   ____|
+             |  |__   |  | |   \|  |    /  ^  \    |  |        |  |_)  |    /  ^  \ `---|  |----`---|  |----`|  |     |  |__
+             |   __|  |  | |  . `  |   /  /_\  \   |  |        |   _  <    /  /_\  \    |  |        |  |     |  |     |   __|
+             |  |     |  | |  |\   |  /  _____  \  |  `----.   |  |_)  |  /  _____  \   |  |        |  |     |  `----.|  |____
+             |__|     |__| |__| \__| /__/     \__\ |_______|   |______/  /__/     \__\  |__|        |__|     |_______||_______|''')
+        print(f'\n\n\t\tBoss {"V " * self.boss_victories}', end='')
+        print(f'\t\t\t\t\t\t\t\t\t\t\t\t{"V " * self.player_victories} Player\n')
+        print('''
                                   Navy                               Airforce                           Army
 
                                  __/___                                 |                               _____
@@ -74,7 +83,8 @@ class LordOfWar():
                     print('This round will not be counted.')
                 else:
                     print(f'\n\n\t\t\t\t\t\t\t     **{round_winner} won this round.**')
-                sleep(2)
+                sleep(3)
+                self.screen()
         else:
             print(f'\t\t\t\t\t\t\t    {winner} is the Lord of War.')
 
