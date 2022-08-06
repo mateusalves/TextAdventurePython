@@ -86,7 +86,7 @@ class LordOfWar():
                 sleep(3)
                 self.screen()
         else:
-            print(f'\t\t\t\t\t\t\t    {winner} is the Lord of War.')
+            print(f'\t\t\t\t\t\t\t    {winner} is the Lord of War.\n\n')
 
     def category_analyzer(self, category):
         if self.player_strategy[category] > self.boss_strategy[category]:

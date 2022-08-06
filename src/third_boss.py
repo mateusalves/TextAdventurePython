@@ -1,7 +1,7 @@
 from time import sleep
 from random import randint
 from characters import Character
-from tictactoe import TicTacToe
+from lord_of_war import LordOfWar
 import os
 
 
@@ -9,37 +9,32 @@ class ThirdBoss(Character):
 
     def __init__(self, name="Boss#3"):
         self.name = name
+        self.war_game = LordOfWar()
 
     def intro(self):
-        self.talk(f"My name is {self.name}. I'll certify that you regret entering my room")
+        self.talk(f"I am {self.name}. Your lucky ends here!")
+        self.talk("Unlike the others, I'll challenge you to face me in a best-of-three game.")
+        self.talk("The game is The Lord Of War.")
+        self.talk("You'll receive 100 soldiers and you can allocate them as you wish between 3 forces: navy, airforce and army.")
+        self.talk("Each battle the one who wins in at least two out of the three forces will score a round.")
+        self.talk("Then, after I defeat you, you will wish to have stopped at the others.")
+        sleep(2)
 
     def battle(self):
-        print('For each correct letter the player will win 1 point.')
-        print('For each incorrect letter the player will loose 1 point.')
-        print('At the end the points will be compared to determine the winner.\n\n')
-        battle_result = self.hangman.play()
-        if battle_result == 'draw':
-            self.talk("You're better than I expected! Lets go again!")
-            self.hangman.reset_game()
-            os.system("clear")
-            self.talk("This time I'll bring my A-game!")
-            return self.battle()
-        elif battle_result == 'player':
+        battle_result = self.war_game.play()
+        if battle_result == 'Player':
             return self.defeated()
         else:
             return self.victorious()
 
     def defeated(self):
-        os.system("clear")
-        self.hangman.screen()
-        self.talk("Ohh nooo!!! I can't believe you defeated me!")
+        self.talk("I thought you were only lucky to defeat the others.")
+        self.talk("Congratulations, I shall let you pass.")
         input("Press any key to continue... ")
-        return 'boss_3'
+        return 'room_finished'
 
     def victorious(self):
-        os.system("clear")
-        self.hangman.screen()
-        self.talk("This result was set the moment you decided to challenge me.")
+        self.talk("I don't have anything to say to you...")
         input("Press any key to continue... ")
         return 'game_over'
 
