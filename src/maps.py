@@ -61,7 +61,7 @@ class RoomBoss3(Scene):
 
 class GameOver(Scene):
     def enter(self):
-        print("\t\tYou kinda suck at this, don't you? :(")
+        print("\tYou kinda suck at this, don't you? :(")
         return 'room_finished'
 
 class Finished(Scene):

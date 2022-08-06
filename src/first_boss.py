@@ -35,6 +35,7 @@ class FirstBoss(Character):
 
         self.talk("I'll even let you start since I'm so great at this!")
         print("Choose line and column in this order. Ex: '1a'")
+        sleep(2)
 
     def battle(self):
         battle_result = self.ticTacToe.play()

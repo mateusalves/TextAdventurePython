@@ -18,6 +18,7 @@ class SecondBoss(Character):
         print('For each correct letter the player will win 1 point.')
         print('For each incorrect letter the player will loose 1 point.')
         print('At the end the points will be compared to determine the winner.\n\n')
+        input("Press any key to continue... ")
         battle_result = self.hangman.play()
         if battle_result == 'draw':
             self.talk("You're better than I expected! Lets go again!")

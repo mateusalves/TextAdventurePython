@@ -33,6 +33,7 @@ class TicTacToe():
             return 'draw'
 
     def screen(self):
+        os.system('clear')
         print("""\n\t\t   a     b     c
                       |     |
                 1  %s  |  %s  |  %s
@@ -76,9 +77,9 @@ class TicTacToe():
             self.moves_left.remove(boss_move)
 
         except Exception:
-            os.system('clear')
             print("Wrong movement. Please, select another one.")
             print("Choose line and column in this order. Ex: '1a'")
+            input('Press any key to continue...')
 
 
     def finished(self):

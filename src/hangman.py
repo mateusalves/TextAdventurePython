@@ -55,6 +55,7 @@ class HangMan():
         return victorious
 
     def screen(self):
+        os.system('clear')
         print(f'\t\tIt is the {self.currently_playing} turn')
         print("\t   _____      \n"
               "\t  |     |     \n"
@@ -83,7 +84,7 @@ class HangMan():
         print(*self.chosen_letters, sep=", ")
         print('\n\n')
         print(f'\tPlayer points: {self.player_points}')
-        print(f'\tBoss points: {self.boss_points}')
+        print(f'\tBoss points: {self.boss_points}\n')
 
     def reset_game(self):
         self.secret_word = self.choose_random_word().replace("\n", "").upper()

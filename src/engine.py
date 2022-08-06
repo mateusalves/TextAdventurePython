@@ -12,7 +12,6 @@ class Engine():
 
         while current_room != last_room:
             next_room = current_room.enter()
-            print(next_room)
             current_room = self.room.next_room(next_room)
 
         current_room.enter()
