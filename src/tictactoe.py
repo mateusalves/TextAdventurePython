@@ -7,9 +7,7 @@ import os
 class TicTacToe(Challenge):
 
     def __init__(self, player_choice='x'):
-        self.player_choice = player_choice
-        self.boss_choice = 'o' if self.player_choice == 'x' else 'x'
-        self.champz = None
+        self.set_player_choice(player_choice)
         self.reset_game()
 
     def set_player_choice(self, new_player_choice):
