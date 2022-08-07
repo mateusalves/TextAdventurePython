@@ -1,10 +1,11 @@
 from random import randint, choice
 from time import sleep
+from challenges import Challenge
 import string
 import os
 
 
-class HangMan():
+class HangMan(Challenge):
 
     def __init__(self, lang='pt_br', starter='player'):
         self.body_parts = {'head': 'O', 'l_arm': '/', 'r_arm': '\\',

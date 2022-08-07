@@ -1,9 +1,10 @@
 from time import sleep
 from random import randint
+from challenges import Challenge
 import os
 
 
-class TicTacToe():
+class TicTacToe(Challenge):
 
     def __init__(self, player_choice='x'):
         self.player_choice = player_choice

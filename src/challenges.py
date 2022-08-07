@@ -1,17 +1,14 @@
 class Challenge():
 
-    def start(self):
+    def play(self):
         pass
 
-    def next_turn(self):
+    def screen(self):
         pass
 
-    def end(self):
+    def reset_game(self):
         pass
 
-    def players(self):
-        pass
-
-    def score_board(self):
+    def finished(self):
         pass
 

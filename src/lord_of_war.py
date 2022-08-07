@@ -1,10 +1,11 @@
 from random import randint, choice
+from challenges import Challenge
 from time import sleep
 import string
 import os
 
 
-class LordOfWar():
+class LordOfWar(Challenge):
 
     def __init__(self):
         self.reset_game()
