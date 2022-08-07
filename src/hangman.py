@@ -9,7 +9,7 @@ class HangMan(Challenge):
 
     def __init__(self, lang='pt_br', starter='player'):
         self.body_parts = {'head': 'O', 'l_arm': '/', 'r_arm': '\\',
-                           'body':  '|', 'l_leg': '/', 'r_leg': '\\'}
+                           'body': '|', 'l_leg': '/', 'r_leg': '\\'}
         self.lang = lang
         self.currently_playing = starter
         self.reset_game()
@@ -119,11 +119,16 @@ class HangMan(Challenge):
 
     def choose_random_word(self):
         if self.lang == 'pt_br':
-            with open('../words_pt.txt', 'r') as f:
+
+            root_path = os.path.abspath(os.path.join(
+                os.path.dirname(__file__),
+                '..'))
+
+            with open(f'{root_path}/words_pt.txt', 'r') as f:
                 lines = f.readlines()
                 f.close()
         else:
-            with open('../words_en.txt', 'r') as f:
+            with open(f'{root_path}/words_en.txt', 'r') as f:
                 lines = f.readlines()
                 f.close()
         return lines[randint(0, len(lines)-1)]
