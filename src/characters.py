@@ -7,6 +7,9 @@ class Character():
     def __init__(self, name):
         self.name = name
 
+    def intro(self):
+        pass
+
     def talk(self, msg, dramatic_pause=0.05):
         print(f"[{self.name}]: ", end='')
         for char in msg:
@@ -24,13 +27,13 @@ class Character():
         print('\n')
         sleep(1)
 
-    def play(self):
+    def battle(self):
         pass
 
-    def win(self):
+    def defeated(self):
         pass
 
-    def loose(self):
+    def victorious(self):
         pass
 
 
