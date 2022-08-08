@@ -115,5 +115,4 @@ class TicTacToe(Challenge):
 
 if __name__ == "__main__":
     ticTacToe = TicTacToe()
-    ticTacToe.player_choice = 'o'
     ticTacToe.play()

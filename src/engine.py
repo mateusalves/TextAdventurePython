@@ -16,4 +16,3 @@ class Engine():
 
         current_room.enter()
 
-

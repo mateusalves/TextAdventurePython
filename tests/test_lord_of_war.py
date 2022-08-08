@@ -108,7 +108,6 @@ class TestLordOfWar(unittest.TestCase):
         self.assertDictEqual(self.lordgame.boss_strategy, self.default_boss_strategy)
         self.assertDictEqual(self.lordgame.player_strategy, self.default_player_strategy)
 
-
     def test_finished(self):
         self.lordgame.player_victories = 2
         self.assertTrue(self.lordgame.finished())
