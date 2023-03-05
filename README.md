@@ -49,5 +49,5 @@ python -m unittest
 
 ### Lord of War Module
 
-![Alt text](screenshots/lorOfWar.gif?raw=true "running lord_of_war")
+![Alt text](screenshots/lordOfWar.gif?raw=true "running lord_of_war")
 
