@@ -9,11 +9,7 @@ This is a text adventure game in Python. It was created based on the lectures in
 
 ## Story
 
-You find yourself in a dungeon, trapped.  The door ahead is shut, yet there must be way to open it.
-The question is, do you want to?  Are you ready to face what might be waiting on the other side?
-
-Hint: Picking up a sword and a shield will help.
-
+You are in the final quest to conquer a dungeon. However, in order to defeat the final bosses you must win on their own challenge games.
 
 ## Running:
 ### A. Main application:
@@ -37,3 +33,4 @@ In TextAdventurePython/
 python -m unittest
 ```
 
+## Screenshots:
