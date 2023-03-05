@@ -23,7 +23,7 @@ In src/
 ```python
 python tictactoe.py
 python hangman.py
-python lord_or_war.py
+python lord_of_war.py
 ```
 
 ## Testing:
@@ -34,3 +34,20 @@ python -m unittest
 ```
 
 ## Screenshots:
+
+### Text Adventure
+
+![Alt text](screenshots/main.gif?raw=true "running main")
+
+### TicTacToe Module
+
+![Alt text](screenshots/tictactoe.gif?raw=true "running tictactoe")
+
+### Hangman Module
+
+![Alt text](screenshots/hangman.gif?raw=true "running hangman")
+
+### Lord of War Module
+
+![Alt text](screenshots/lorOfWar.gif?raw=true "running lord_of_war")
+
