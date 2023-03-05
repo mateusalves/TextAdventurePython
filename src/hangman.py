@@ -118,12 +118,10 @@ class HangMan(Challenge):
         return guess
 
     def choose_random_word(self):
+        root_path = os.path.abspath(os.path.join(
+            os.path.dirname(__file__),
+            '..'))
         if self.lang == 'pt_br':
-
-            root_path = os.path.abspath(os.path.join(
-                os.path.dirname(__file__),
-                '..'))
-
             with open(f'{root_path}/words_pt.txt', 'r') as f:
                 lines = f.readlines()
                 f.close()
