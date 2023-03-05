@@ -41,7 +41,10 @@ python -m unittest
 
 ### TicTacToe Module
 
+<details>
+<summary>TicTacToe Module</summary>
 ![Alt text](screenshots/tictactoe.gif?raw=true "running tictactoe")
+</details>
 
 ### Hangman Module
 
